@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxia Interactiva Katia Yesenia</title>
+    
+    <!-- Enlace a la hoja de estilos Premium -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- SISTEMA DE LOGIN CON FONDO DE PARTÍCULAS INTERACTIVO -->
+    <div class="login-container" id="loginContainer">
+        <!-- Canvas para el fondo de corazones flotantes -->
+        <canvas id="loginBackgroundCanvas"></canvas>
+        
+        <div class="heart-lock-container">
+            <div class="heart-lock">
+                <div class="heart"></div>
+                <div class="lock-body"></div>
+                <div class="lock-hole"></div>
+                <div class="lock-keyhole"></div>
+            </div>
+            
+            <div class="login-form">
+                <h2>Iniciar Sesión</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="username">Usuario:</label>
+                        <input type="text" id="username" placeholder="Ingresa tu nombre" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
+                    </div>
+                    <button type="submit" class="login-btn">Acceder al Universo</button>
+                </form>
+                <div id="message" class="message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALAXIA INTERACTIVA (PÁGINA PRINCIPAL) -->
+    <div class="galaxy-container" id="galaxyContainer">
+        <div class="header">
+            <h1>Galaxia Katia Yesenia</h1>
+            <div class="subtitle">Una experiencia cósmica romántica</div>
+        </div>
+        
+        <div class="container">
+            <div class="sidebar">
+                <div class="control-group colores">
+                    <h3>🎨 Colores del Tema</h3>
+                    <div class="color-picker">
+                        <button class="color-btn active" style="background: #ff1493;" data-color="ff1493" title="Rosa"></button>
+                        <button class="color-btn" style="background: #6495ed;" data-color="6495ed" title="Azul"></button>
+                        <button class="color-btn" style="background: #32cd32;" data-color="32cd32" title="Verde"></button>
+                        <button class="color-btn" style="background: #ffa500;" data-color="ffa500" title="Naranja"></button>
+                        <button class="color-btn" style="background: #9370db;" data-color="9370db" title="Púrpura"></button>
+                        <button class="color-btn" style="background: #00ffff;" data-color="00ffff" title="Cian"></button>
+                    </div>
+                </div>
+                
+                <div class="control-group corazones">
+                    <h3>⭐ Controles de Corazones</h3>
+                    <button id="love-btn" class="btn">💖 Te Amo</button>
+                    <button id="clear-hearts-btn" class="btn">🧹 Limpiar Corazones</button>
+                    
+                    <div class="slider-container">
+                        <label for="heart-speed">Velocidad de Corazones</label>
+                        <input type="range" id="heart-speed" class="slider" min="0.5" max="3" step="0.1" value="1.5">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label for="heart-size">Tamaño de Corazones</label>
+                        <input type="range" id="heart-size" class="slider" min="5" max="20" step="1" value="12">
+                    </div>
+                </div>
+                
+                <div class="control-group galaxia">
+                    <h3>🌌 Controles de Galaxia</h3>
+                    <button id="reset-camera-btn" class="btn">📷 Reiniciar Cámara</button>
+                    
+                    <div class="slider-container">
+                        <label for="rotation-speed">Velocidad de Rotación</label>
+                        <input type="range" id="rotation-speed" class="slider" min="0" max="0.005" step="0.0005" value="0.0005">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label for="global-speed">Velocidad Global</label>
+                        <input type="range" id="global-speed" class="slider" min="0" max="2" value="0.5" step="0.05">
+                    </div>
+                    
+                    <button id="pause-play-btn" class="btn">⏸️ Pausar</button>
+                </div>
+                
+                <div class="control-group efectos">
+                    <h3>✨ Efectos Especiales</h3>
+                    <button id="comet-btn" class="btn">☄️ Lanzar Cometa</button>
+                    <button id="explosion-btn" class="btn">💥 Explosión de Amor</button>
+                    <button id="constellation-btn" class="btn">🔭 Mostrar Constelación</button>
+                </div>
+                
+                <div class="control-group viaje">
+                    <h3>🚀 Viaje Espacial</h3>
+                    <button id="travel-btn" class="btn">🌍 Viajar al Mundo Interior</button>
+                </div>
+
+                <div class="control-group comunicador">
+                    <h3>💌 Comunicador Especial</h3>
+                    <div class="comunicador-question">¿Deseas comunicarte con el amor de tu vida?</div>
+                    <button id="comunicador-btn" class="btn">💖 SÍ, QUIERO COMUNICARME</button>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="info-panel">
+                    <div>Corazones: <span id="hearts-count">0</span></div>
+                    <div>Planetas: <span id="planets-count">10</span></div>
+                    <div>FPS: <span id="fps-counter">60</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MODAL DE MENSAJES CON DISEÑO PREMIUM -->
+        <div id="modal">
+            <div id="modal-content">
+                <div id="modal-message"></div>
+                <div>
+                    <button id="new-message-btn" class="modal-btn" title="Mensaje Siguiente">❤️</button>
+                    <button id="close-btn" class="modal-btn" title="Cerrar">✖️</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Creado con 💖 para Katia Yesenia | Haz clic en los planetas, Sol y cometa para descubrir mensajes secretos
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <!-- COMUNICADOR ESPECIAL -->
+    <div class="comunicador-overlay" id="comunicadorOverlay">
+        <div class="comunicador-container">
+            <div class="comunicador-question">¿Estás lista para recibir un mensaje especial?</div>
+            <button class="comunicador-btn" id="abrirDocumentoBtn">💌 ABRIR MENSAJE ESPECIAL</button>
+        </div>
+    </div>
+
+    <div class="doc-viewer" id="docViewer">
+        <button class="close-comunicador" id="closeComunicadorBtn">✖</button>
+        <iframe id="docIframe" src=""></iframe>
+    </div>
+
+    <!-- Cargar dependencias externas 3D de Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Cargar scripts del sistema estructurado de forma modular -->
+    <script src="config.js"></script>
+    <script src="login.js"></script>
+    <script src="galaxy.js"></script>
+    <script src="interior.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
