@@ -664,3 +664,27 @@ function setupControls() {
         });
     });
 }
+
+function createHeartTexture() {
+    const heartCanvas = document.createElement('canvas');
+    heartCanvas.width = 128;
+    heartCanvas.height = 128;
+    const ctx = heartCanvas.getContext('2d');
+    
+    const gradient = ctx.createRadialGradient(64, 64, 5, 64, 64, 64);
+    gradient.addColorStop(0, '#ff77a9');
+    gradient.addColorStop(1, '#ff1493');
+    
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.moveTo(64, 20);
+    ctx.bezierCurveTo(64, 20, 90, 10, 90, 40);
+    ctx.bezierCurveTo(90, 60, 64, 80, 64, 80);
+    ctx.bezierCurveTo(64, 80, 38, 60, 38, 40);
+    ctx.bezierCurveTo(38, 10, 64, 20, 64, 20);
+    ctx.fill();
+    
+    const texture = new THREE.Texture(heartCanvas);
+    texture.needsUpdate = true;
+    return texture;
+}
